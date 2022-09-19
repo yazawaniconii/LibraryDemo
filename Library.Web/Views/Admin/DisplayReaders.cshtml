@@ -1,0 +1,50 @@
+@{
+    Layout = "_AdminLayout";
+}
+@model List<Library.Web.Entities.Reader>
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">编号</th>
+        <th scope="col">姓名</th>
+        <th scope="col">性别</th>
+        <th scope="col">读者类别</th>
+        <th scope="col">已借图书数量</th>
+        <th scope="col">读者状态</th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var i in Model.Select((value, index) => new {value, index}))
+    {
+        <tr>
+            <th scope="row">@((i.index + 1).ToString())</th>
+            <td>@i.value.Id.ToString()</td>
+            <td>@i.value.Name</td>
+            <td>@i.value.Sex</td>
+            @if (i.value.Type != null)
+            {
+                <td>@i.value.Type.TypeName</td>
+            }
+            else
+            {
+                <td></td>
+            }
+            <td>@i.value.BorrowQty.ToString()</td>
+            <td>@i.value.Status</td>
+            <td><a asp-controller="Admin" asp-action="EditReaderInfo" asp-route-id="@i.value.Id">修改</a></td>
+            <td><a asp-controller="Admin" asp-action="DeleteReader" asp-route-id="@i.value.Id">删除</a></td>
+        </tr>
+    }
+    </tbody>
+</table>
+<ul class="pagination justify-content-center">
+    <li class="page-item">
+        <a class="page-link" asp-controller="Admin" asp-action="DisplayReaders" asp-route-id="@(ViewBag.page - 1)">前一页</a>
+    </li>
+    <li class="page-item">
+        <a class="page-link" asp-controller="Admin" asp-action="DisplayReaders" asp-route-id="@(ViewBag.page + 1)">后一页</a>
+    </li>
+</ul>

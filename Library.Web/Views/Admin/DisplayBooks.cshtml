@@ -1,0 +1,33 @@
+@{
+    Layout = "_AdminLayout";
+}
+@model List<Library.Web.Entities.Book>
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">编号</th>
+        <th scope="col">书名</th>
+        <th scope="col">状态</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var i in Model.Select((value, index) => new {value, index}))
+    {
+        <tr>
+            <th scope="row">@((i.index + 1).ToString())</th>
+            <td>@i.value.Code</td>
+            <td>@i.value.Name</td>
+            <td>@i.value.Status</td>
+        </tr>
+    }
+    </tbody>
+</table>
+<ul class="pagination justify-content-center">
+    <li class="page-item">
+        <a class="page-link" asp-route-id="@(ViewBag.page - 1)">前一页</a>
+    </li>
+    <li class="page-item">
+        <a class="page-link" asp-route-id="@(ViewBag.page + 1)">后一页</a>
+    </li>
+</ul>

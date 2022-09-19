@@ -1,0 +1,16 @@
+﻿@model ReaderViewModel
+<div class="container">
+    <div class="alert alert-warning">确定删除该读者？</div>
+    <form asp-controller="Admin" asp-action="DeleteReader" method="post">
+        <div class="form-group">
+            <label asp-for="Id"></label>
+            <input asp-for="Id" class="form-control" type="text" readonly="readonly" value="@ViewBag.id" />
+            <span asp-validation-for="Id" class="text-danger"></span>
+        </div>
+        <div class="btn-group" role="group">
+            <button type="submit" class="btn btn-outline-warning">确认</button>
+            <a asp-controller="Admin" asp-action="DisplayReaders" class="btn btn-outline-primary">取消</a>
+        </div>
+    </form>
+
+</div>

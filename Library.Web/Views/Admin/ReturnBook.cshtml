@@ -1,0 +1,25 @@
+@{
+    Layout = "_AdminLayout";
+}
+@model Library.Web.Models.BorrowViewModel
+@if (ViewBag.isSuccess == true)
+{
+    <div class="alert alert-success">成功</div>
+}
+<div class="col-md-3">
+    <form method="post" asp-controller="Admin" asp-action="ReturnBook">
+        <div class="form-group">
+            <label asp-for="ReaderId"></label>
+            <input asp-for="ReaderId" class="form-control"/>
+            <span asp-validation-for="ReaderId" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="BookCode"></label>
+            <input asp-for="BookCode" class="form-control"/>
+            <span asp-validation-for="BookCode" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">还书</button>
+        </div>
+    </form>
+</div>

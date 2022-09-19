@@ -1,0 +1,40 @@
+@{
+    Layout = "_Layout";
+}
+<div class="container-xxl">
+    <div class="row">
+        <div class="col-md-2">
+            <h2>管理栏</h2>
+            <ul class="nav nav-pills nav-stacked flex-column bg-light">
+                <li>
+                    <a asp-controller="Admin" asp-action="CreateReader" class="nav-link bg-primary text-white my-1">办理借书证</a>
+                </li>
+                <li>
+                    <a asp-controller="Admin" asp-action="DisplayReaders" class="nav-link bg-primary text-white my-1">读者列表</a>
+                </li>
+                <li>
+                    <a asp-controller="Admin" asp-action="AddBook" class="nav-link bg-primary text-white my-1">添加书籍</a>
+                </li>
+                <li>
+                    <a asp-controller="Admin" asp-action="DisplayBooks" class="nav-link bg-primary text-white my-1">书籍列表</a>
+                </li>
+                <li>
+                    <a asp-controller="Admin" asp-action="Borrow" class="nav-link bg-primary text-white my-1">借阅</a>
+                </li>
+                <li>
+                    <a asp-controller="Admin" asp-action="DisplayBorrows" class="nav-link bg-primary text-white my-1">借阅记录</a>
+                </li>
+                <li>
+                    <a asp-controller="Admin" asp-action="ReturnBook" class="nav-link bg-primary text-white my-1">还书</a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-md-10">
+            @RenderBody()
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @await RenderSectionAsync("Scripts", required: false)
+}
