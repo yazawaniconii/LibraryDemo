@@ -70,6 +70,7 @@ namespace Library.Web.Controllers
             if (statusCode == -1)
             {
                 ModelState.AddModelError("Type", "This ReaderType do not exist");
+                return View();
             }
 
             ModelState.Clear();
