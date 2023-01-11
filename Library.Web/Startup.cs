@@ -12,23 +12,41 @@ namespace Library.Web
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        public Startup(IConfiguration configuration, IWebHostEnvironment env)
         {
             Configuration = configuration;
+            _env = env;
         }
 
         public IConfiguration Configuration { get; }
+        private readonly IWebHostEnvironment _env;
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            Console.WriteLine(_env.EnvironmentName);
+            string connectionString;
+            if (_env.IsDevelopment())
+            {
+                connectionString = Configuration.GetConnectionString("mysql");
+            }
+            else
+            {
+                var config = new ConfigurationBuilder()
+                    .AddJsonFile("appsettings.secrets.json");
+                var configuration = config.Build();
+                connectionString = configuration.GetConnectionString("mysql");
+            }
+            Console.WriteLine(connectionString);
+
             services.AddDbContext<LibDbContext>(options =>
                 options
                     .UseLoggerFactory(LibDbContext.MyLoggerFactory)
                     .EnableDetailedErrors()
                     .EnableSensitiveDataLogging()
-                    .UseMySql(Configuration.GetConnectionString("mysql"),
+                    .UseMySql(connectionString,
                         new MySqlServerVersion(new Version(8, 0))));
+
 
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie(options =>
