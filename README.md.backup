@@ -1,10 +1,10 @@
 # Demo
-https://demo.kale-ryan.top/library/
+https://demo.kale-ryan.top/Library/
 
 点击上方 **Admin** 进入管理界面，管理员 ID 1, 密码 123
 
     
-# 基于 ASP.NET 的图书管理系统
+  # 基于 ASP.NET 的图书管理系统
 使用基于 ASP.NET Core 的 B/S 应用，数据库是 MySQL，编程语言是 C# ，SDK 是 .NET 6。整体采用 MVC 架构，开发平台用的是 JetBrains 的 Rider。
 
 在服务器与数据库的连接方面，我选择了微软的 Entity Framework Core 这个库作为ORM，使用这个库可以用 C# 的 Linq 语法进行数据库操作，在与数据库连接时会转成 SQL 语句。
