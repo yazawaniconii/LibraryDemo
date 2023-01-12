@@ -75,9 +75,11 @@ namespace Library.Web
             }
 
             app.UseHttpsRedirection();
-            app.UseStaticFiles();
 
+            app.UsePathBase("/Library");
             app.UseRouting();
+
+            app.UseStaticFiles();
 
             app.UseAuthentication();
 
