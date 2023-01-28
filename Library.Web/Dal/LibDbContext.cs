@@ -12,8 +12,8 @@ namespace Library.Web.Dal
         //继承DbContext基类后,设置构造函数和DbSet,详情可见Entity Framework Core文档
         public LibDbContext(DbContextOptions<LibDbContext> options) : base(options)
         {
-
         }
+
         public DbSet<Reader> Readers { get; set; }
         public DbSet<ReaderType> ReaderTypes { get; set; }
         public DbSet<Book> Books { get; set; }

@@ -46,6 +46,5 @@ namespace Library.Web.Entities
 
         [StringLength(2), Column(TypeName = "char(2)")]
         public string Status { get; set; }
-
     }
 }

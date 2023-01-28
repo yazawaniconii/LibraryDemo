@@ -6,6 +6,7 @@ namespace Library.Web.Models
     {
         [Required]
         public string Code { get; set; }
+
         [Required]
         public string Name { get; set; }
     }

@@ -7,8 +7,10 @@ namespace Library.Web.Models
     {
         [Required]
         public int Id { get; set; }
+
         [Required]
         public string Password { get; set; }
+
         public string ReturnUrl { get; set; }
     }
 }

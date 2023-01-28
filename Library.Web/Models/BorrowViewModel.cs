@@ -6,6 +6,7 @@ namespace Library.Web.Models
     {
         [Required]
         public int ReaderId { get; set; }
+
         [Required]
         public string BookCode { get; set; }
     }

@@ -47,7 +47,7 @@ namespace Library.Web.Controllers
             }
 
             //转换枚举类
-            var sexModel = (SexEnum)readerViewModel.Sex;
+            var sexModel = (SexEnum) readerViewModel.Sex;
             string sex = sexModel.ToString();
             var reader = new Reader
             {
@@ -178,7 +178,7 @@ namespace Library.Web.Controllers
             }
 
             //未查到读者类别
-            if (reader.Type== null)
+            if (reader.Type == null)
             {
                 ModelState.AddModelError("Id", "Unknown reader type");
                 return View();
@@ -278,10 +278,10 @@ namespace Library.Web.Controllers
 
             //查询该读者是否借阅了该书籍
             var borrow = await _context.Borrows
-                    .Include(x => x.Reader)
-                    .Include(x => x.Book)
-                    .SingleOrDefaultAsync(
-                        x => x.Reader.Id == reader.Id && x.Book.Code == book.Code && x.IsReturned == false);
+                .Include(x => x.Reader)
+                .Include(x => x.Book)
+                .SingleOrDefaultAsync(
+                    x => x.Reader.Id == reader.Id && x.Book.Code == book.Code && x.IsReturned == false);
             if (borrow == null)
             {
                 ModelState.AddModelError("BookCode", "This reader does not borrow the book");
@@ -318,7 +318,7 @@ namespace Library.Web.Controllers
             var rdDal = new ReaderDal(_context);
             var reader = await rdDal.GetById(viewModel.Id);
             //查不到读者就直接返回视图
-            if (reader == null )
+            if (reader == null)
             {
                 ModelState.AddModelError("Id", "This reader does not exist");
                 return View();
@@ -349,6 +349,7 @@ namespace Library.Web.Controllers
             {
                 RedirectToAction(nameof(DisplayReaders));
             }
+
             ViewBag.id = id;
             return View();
         }

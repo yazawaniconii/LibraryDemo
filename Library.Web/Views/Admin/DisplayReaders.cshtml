@@ -34,8 +34,12 @@
             }
             <td>@i.value.BorrowQty.ToString()</td>
             <td>@i.value.Status</td>
-            <td><a asp-controller="Admin" asp-action="EditReaderInfo" asp-route-id="@i.value.Id">修改</a></td>
-            <td><a asp-controller="Admin" asp-action="DeleteReader" asp-route-id="@i.value.Id">删除</a></td>
+            <td>
+                <a asp-controller="Admin" asp-action="EditReaderInfo" asp-route-id="@i.value.Id">修改</a>
+            </td>
+            <td>
+                <a asp-controller="Admin" asp-action="DeleteReader" asp-route-id="@i.value.Id">删除</a>
+            </td>
         </tr>
     }
     </tbody>

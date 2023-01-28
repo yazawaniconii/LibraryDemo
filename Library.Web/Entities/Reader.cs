@@ -11,10 +11,13 @@ namespace Library.Web.Entities
         [Required]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int Id { get; set; }
+
         [MaxLength(20)]
         public string Name { get; set; }
+
         [StringLength(1), Column(TypeName = "char(1)")]
         public string Sex { get; set; }
+
         public ReaderType Type { get; set; }
 
         [MaxLength(20)]

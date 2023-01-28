@@ -4,9 +4,9 @@ namespace Library.Web.Models
 {
     public class ReaderViewModel
     {
-
         [Required]
         public int Id { get; set; }
+
         [MaxLength(20)]
         public string Name { get; set; }
 

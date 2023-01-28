@@ -27,6 +27,7 @@ namespace Library.Web.Dal
             {
                 return null;
             }
+
             return userArray[0];
         }
 
@@ -40,6 +41,7 @@ namespace Library.Web.Dal
             {
                 return -1;
             }
+
             reader.Type = readerType;
             await _context.Readers.AddAsync(reader);
             //可返回数据库修改行数
@@ -55,6 +57,5 @@ namespace Library.Web.Dal
                 .ToListAsync();
             return readerList;
         }
-
     }
 }
