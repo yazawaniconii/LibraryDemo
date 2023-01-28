@@ -76,7 +76,13 @@ namespace Library.Web
 
             app.UseHttpsRedirection();
 
-            app.UsePathBase("/Library");
+            var pathBase = Configuration["ASPNETCORE_PATH_BASE"];
+            Console.WriteLine("PathBase: " + pathBase);
+            if (!string.IsNullOrEmpty(pathBase))
+            {
+                app.UsePathBase(pathBase);
+            }
+
             app.UseRouting();
 
             app.UseStaticFiles();
