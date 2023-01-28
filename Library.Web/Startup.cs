@@ -29,6 +29,7 @@ namespace Library.Web
             if (_env.IsDevelopment())
             {
                 connectionString = Configuration.GetConnectionString("mysql");
+                Console.WriteLine(connectionString);
             }
             else
             {
@@ -37,7 +38,6 @@ namespace Library.Web
                 var configuration = config.Build();
                 connectionString = configuration.GetConnectionString("mysql");
             }
-            Console.WriteLine(connectionString);
 
             services.AddDbContext<LibDbContext>(options =>
                 options
