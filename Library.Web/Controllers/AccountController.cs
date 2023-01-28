@@ -18,6 +18,7 @@ namespace Library.Web.Controllers
         {
             _context = context;
         }
+
         [HttpGet]
         public IActionResult Login(string returnUrl)
         {
@@ -65,7 +66,12 @@ namespace Library.Web.Controllers
                 return View();
             }
             //登录成功后重定向,若无重定向路径则重定向至根路径
-            return Redirect(loginUser.ReturnUrl ?? "/");
+            if (!string.IsNullOrEmpty(loginUser.ReturnUrl))
+            {
+                return Redirect(loginUser.ReturnUrl);
+            }
+
+            return RedirectToAction("Index", "Home");
         }
 
         [HttpGet]
