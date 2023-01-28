@@ -65,13 +65,16 @@ namespace Library.Web.Controllers
                 ViewData["ReturnUrl"] = loginUser.ReturnUrl;
                 return View();
             }
+
             //登录成功后重定向,若无重定向路径则重定向至根路径
             if (!string.IsNullOrEmpty(loginUser.ReturnUrl))
             {
                 return Redirect(loginUser.ReturnUrl);
             }
 
-            return RedirectToAction("Index", "Home");
+            // According the match patten, this method expects "Home" instead of "HomeController"
+            return RedirectToAction(nameof(HomeController.Index),
+                nameof(HomeController).Replace("Controller", ""));
         }
 
         [HttpGet]
