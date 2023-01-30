@@ -1,3 +1,4 @@
+@using Microsoft.Extensions.Hosting
 @model Library.Web.Models.LoginUser
 
 @{
@@ -6,6 +7,16 @@
 
 <div class="container">
     <h1>@ViewData["Title"]</h1>
+    @{
+        var env = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
+        if (env == Environments.Staging)
+        {
+            <h3 class="text-warning">STAGING</h3>
+            <h4>Test Account</h4>
+            <strong>Id: 1</strong>
+            <strong>Password: 123</strong>
+        }
+    }
     <div class="row">
         <div class="col-md-4">
             <section>
